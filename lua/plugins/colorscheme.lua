@@ -9,14 +9,14 @@ return {
 				terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
 				styles = {
 					comments = "italic",
-					conditionals = "underline",
+					conditionals = "italic",
 					constants = "NONE",
 					functions = "NONE",
 					keywords = "bold",
 					numbers = "NONE",
 					operators = "bold",
 					strings = "NONE",
-					types = "underline",
+					types = "italic",
 					variables = "NONE",
 				},
 			},
