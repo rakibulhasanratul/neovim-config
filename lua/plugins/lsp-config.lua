@@ -196,9 +196,11 @@ return {
 		end
 
 		-- Servers are derived from after/lsp/*.lua, so adding a server is just
-		-- creating its config file. Servers without custom settings (jdtls, html,
-		-- cspell_ls) use `return {}` and rely on the nvim-lspconfig defaults.
-		local servers = lsp_servers()
+		-- creating its config file.
+		-- jdtls is handled by nvim-jdtls plugin (not lspconfig), so exclude it.
+		local servers = vim.tbl_filter(function(name)
+			return name ~= "jdtls"
+		end, lsp_servers())
 
 		-- Tools to install (formatters, linters, etc.)
 		local tools = {
@@ -209,6 +211,8 @@ return {
 			"google-java-format",
 			"checkstyle",
 			"hyprls",
+			-- Java LSP ecosystem
+			"jdtls",
 		}
 
 		-- Install tools (skipping system-wide installations)
